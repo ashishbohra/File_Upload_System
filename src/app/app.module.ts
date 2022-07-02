@@ -12,6 +12,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { SharePreferencesDetailsComponent } from './share-preferences-details/share-preferences-details.component';
 
 
 const MaterialComponents=[
@@ -21,7 +22,8 @@ const MaterialComponents=[
 @NgModule({
   declarations: [
     AppComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    SharePreferencesDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -23,7 +23,7 @@ export class FileUploadComponent implements OnInit {
   displayedColumns: string[] = [ 'name', 'size','action'];
   dataSource = [...ELEMENT_DATA];
 
-
+  isMoveToPreferenceSection=false;
   public files: Set<File> = new Set();
   public limit=1073741824;
   public progress = 0;
@@ -116,6 +116,10 @@ export class FileUploadComponent implements OnInit {
     }
   }
 
+  moveToPreferencesSection(){
+    this.isMoveToPreferenceSection=true;
+  }
+
   UploadFiles() {
     var formData = new FormData();
     this.files.forEach(file => {
@@ -124,7 +128,6 @@ export class FileUploadComponent implements OnInit {
     this.http.post('http://localhost:5001/upload/data?key=asdsad1232asdasd', formData,{reportProgress:true,observe:"events"})
       .subscribe({
         next: (response) => {
-          debugger
           this.progress=Math.round(response['loaded']/response['total'] * 100);
           if(this.progress > 0)
             console.log("file uploaded " + this.progress + " %");
