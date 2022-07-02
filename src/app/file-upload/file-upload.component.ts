@@ -121,7 +121,7 @@ export class FileUploadComponent implements OnInit {
     this.files.forEach(file => {
       formData.append('file', file,file.name);
     });
-    this.http.post('http://localhost:5000/upload/data?key=asdsad1232asdasd', formData,{reportProgress:true,observe:"events"})
+    this.http.post('http://localhost:5001/upload/data?key=asdsad1232asdasd', formData,{reportProgress:true,observe:"events"})
       .subscribe({
         next: (response) => {
           debugger
