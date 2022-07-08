@@ -5,7 +5,7 @@
   aria-labelledby="example-radio-group-label"
   class="example-radio-group"
   [(ngModel)]="favoritepreference">
-  <mat-radio-button color="accent" class="example-radio-button" *ngFor="let preference of preferences" [value]="preference">
+  <mat-radio-button color="warn" class="example-radio-button" *ngFor="let preference of preferences" [value]="preference">
     {{preference}}
   </mat-radio-button>
 </mat-radio-group>
@@ -18,15 +18,31 @@
     <!-- <span>Share Via mail clicked</span> -->
     <form class="example-form">
       <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-               placeholder="Ex. pat@example.com">
-        <mat-hint>Errors appear instantly!</mat-hint>
-        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        <mat-label>From Email</mat-label>
+        <input type="email" matInput [formControl]="from_emailFormControl" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="from_emailFormControl.hasError('email') && !from_emailFormControl.hasError('required')">
           Please enter a valid email address
         </mat-error>
-        <mat-error *ngIf="emailFormControl.hasError('required')">
+        <mat-error *ngIf="from_emailFormControl.hasError('required')">
           Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>From Email</mat-label>
+        <textarea type="textarea" matInput [formControl]="mailBodyFormControl" placeholder="Ex. this is sample body">
+        <mat-error *ngIf="mailBodyFormControl.hasError('textarea') && !mailBodyFormControl.hasError('required')">
+          Please enter a email body
+        </mat-error>
+        <mat-error *ngIf="mailBodyFormControl.hasError('required')">
+          Body is <strong>required</strong>
+        </mat-error>
+      </mat-form-field> -->
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Mail Body</mat-label>
+        <textarea  type="textarea"  matInput [formControl]="mailBodyFormControl"  placeholder="Ex. this is sample body"></textarea>
+        <mat-error *ngIf="mailBodyFormControl.hasError('required')">
+          Body is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </form>
