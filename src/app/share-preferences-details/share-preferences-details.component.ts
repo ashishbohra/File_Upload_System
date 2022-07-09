@@ -1,11 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-export interface fileData {
-  name: string;
-}
-
-const ELEMENT_DATA: fileData[] = [
-];
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-share-preferences-details',
@@ -13,13 +7,15 @@ const ELEMENT_DATA: fileData[] = [
   styleUrls: ['./share-preferences-details.component.css']
 })
 export class SharePreferencesDetailsComponent implements OnInit {
-  @Input() dataSource:fileData[] ;
+  @Input() dataSource:Set<File> ;
 
-  displayedColumns: string[] = [ 'name'];
+  favoritepreference: string;
+  preferences: string[] = ['Share Via mail', 'Get Link'];
+
+
   constructor() { }
 
   ngOnInit(): void {
-    var file =this.dataSource;
   }
 
 }

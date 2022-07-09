@@ -7,6 +7,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
+    "allowJs": true,
     "noImplicitAny": false ,
     "strictPropertyInitialization": false,
     "noPropertyAccessFromIndexSignature": true,
