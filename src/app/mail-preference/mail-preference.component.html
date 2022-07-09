@@ -1,0 +1,54 @@
+<div>
+  <!-- <span>Share Via mail clicked</span> -->
+  <form class="example-form">
+    <div>
+      <div class="email-container-div" *ngIf="toEmailsList.length > 0">
+          <div *ngFor="let email of toEmailsList" class="email-container-div-loop">
+            <div class="email-data-div">
+                <span>{{email}}</span>
+                <button type="button" class="close" aria-label="Close" (click)="removeToEmail(email)">
+                  <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        </div>
+      </div>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>To Email</mat-label>
+        <input type="email" matInput [formControl]="to_emailFormControl" placeholder="Ex. pat@example.com" (change)="BindToEmails()">
+        <mat-error *ngIf="to_emailFormControl.hasError('email') && !to_emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="toEmailsList.length == 0">
+          TO  Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>From Email</mat-label>
+      <input type="email" matInput [formControl]="from_emailFormControl" placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="from_emailFormControl.hasError('email') && !from_emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="from_emailFormControl.hasError('required')">
+        From Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Mail Body</mat-label>
+      <textarea  type="textarea"  matInput [formControl]="mailBodyFormControl"  placeholder="Ex. this is sample body"></textarea>
+      <mat-error *ngIf="mailBodyFormControl.hasError('required')">
+        Body is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+</div>
+<div class="demo-button-container">
+  <button mat-raised-button class="demo-button" style="margin-top: 20px;" (click)="UploadFiles()">
+    <mat-icon aria-hidden="true" aria-label="Example home icon"  color="primary">share</mat-icon> Share via E-Mail
+  </button>
+</div>

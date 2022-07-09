@@ -10,43 +10,15 @@
   </mat-radio-button>
 </mat-radio-group>
 
-<!-- <div>Your preference is :  {{favoritepreference}}</div> -->
-
 <div>
 
   <div *ngIf="favoritepreference == 'Share Via mail'">
     <!-- <span>Share Via mail clicked</span> -->
-    <form class="example-form">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>From Email</mat-label>
-        <input type="email" matInput [formControl]="from_emailFormControl" placeholder="Ex. pat@example.com">
-        <mat-error *ngIf="from_emailFormControl.hasError('email') && !from_emailFormControl.hasError('required')">
-          Please enter a valid email address
-        </mat-error>
-        <mat-error *ngIf="from_emailFormControl.hasError('required')">
-          Email is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
+    <app-mail-preference
+    [dataSource]="dataSource"
+    >
 
-      <!-- <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>From Email</mat-label>
-        <textarea type="textarea" matInput [formControl]="mailBodyFormControl" placeholder="Ex. this is sample body">
-        <mat-error *ngIf="mailBodyFormControl.hasError('textarea') && !mailBodyFormControl.hasError('required')">
-          Please enter a email body
-        </mat-error>
-        <mat-error *ngIf="mailBodyFormControl.hasError('required')">
-          Body is <strong>required</strong>
-        </mat-error>
-      </mat-form-field> -->
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Mail Body</mat-label>
-        <textarea  type="textarea"  matInput [formControl]="mailBodyFormControl"  placeholder="Ex. this is sample body"></textarea>
-        <mat-error *ngIf="mailBodyFormControl.hasError('required')">
-          Body is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-    </form>
-
+    </app-mail-preference>
   </div>
 
   <div *ngIf="favoritepreference == 'Get Link'">
@@ -55,14 +27,3 @@
 
 </div>
 
-
-<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element">{{element.name}}</td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table> -->

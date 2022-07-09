@@ -18,18 +18,22 @@ import {MatInputModule} from '@angular/material/input';
 
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { SharePreferencesDetailsComponent } from './share-preferences-details/share-preferences-details.component';
+import { MailPreferenceComponent } from './mail-preference/mail-preference.component';
+
+
+import {DocumentManagerService} from '../services/document-manager.service';
 
 
 const MaterialComponents=[
   MatButtonModule,MatIconModule,MatNativeDateModule,MatProgressBarModule,
   MatRadioModule,MatSlideToggleModule,MatInputModule
 ]
-
 @NgModule({
   declarations: [
     AppComponent,
     FileUploadComponent,
-    SharePreferencesDetailsComponent
+    SharePreferencesDetailsComponent,
+    MailPreferenceComponent
   ],
   imports: [
     FormsModule,
@@ -45,7 +49,9 @@ const MaterialComponents=[
   exports:[
     MaterialComponents
   ],
-  providers: [],
+  providers: [
+    { provide: 'DocumentManagerService', useClass: DocumentManagerService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
